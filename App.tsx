@@ -1,52 +1,39 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, Text, View, SafeAreaView, Image, TextInput } from 'react-native';
+import TitleHome from './components/Home/TitleHome';
+import Search from './components/Search';
+import Places from './components/Places/Places';
 
 export default function App() {
   return (
     <SafeAreaView style={styles.safeArea}>
       <View style={styles.container}>
-        <View style={styles.headerContainer}>
-          <View>
-            <Text style={styles.title}>Descubra</Text>
-            <Text style={styles.title}>lugares incríveis</Text>
-          </View>
-          <View>
-            <Image
-              source={require('./assets/images/profile.png')}
-              style={styles.profile}
-            />
-          </View>
+        {/* TITLE HOME */}
+        <View style={styles.title}>
+          <TitleHome
+            title="Descubra"
+            subtitle="lugares incríveis"            
+          />
         </View>
 
         {/* SEARCH */}
         <View style={styles.search}>
-          <View style={styles.searchContainer}>
-            <Image
-              source={require('./assets/images/search.svg')}
-              style={styles.icon}
-            />
-
-            <TextInput
-              placeholder="Pesquise um local"
-              style={styles.input}              
-            />
-
-            <Image
-              source={require('./assets/images/settings.svg')}
-              style={styles.icon}
-            />
-          </View>
+          <Search />
         </View>
 
         {/* PLACES */}
         <View style={styles.places}>
-          <Text style={styles.text}>Aqui virá o componente de lugares</Text>
+          <Places
+            title="Locais populares"
+          />
         </View>
 
         {/* FAVORITES */}
         <View style={styles.favorites}>
-          <Text style={styles.text}>Aqui virá o componente de lugares favoritos</Text>
+          <Places
+            title="Meus locais favoritos"
+          />
         </View>
 
         {/* MENU */}
@@ -75,25 +62,9 @@ const styles = StyleSheet.create({
     // borderColor: 'blue',
     flex: 1,
   },
-  headerContainer: {
-    flexDirection: 'row',
-    height: 45,
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    width: '100%',
-    marginTop: 10,
-    // borderWidth: 4,
-    // borderColor: '#EE1111',
-    flex: 1,
-  },
   title: {
-    color: '#000',
-    fontSize: 25,
-    fontWeight: 'bold',
-  },
-  profile: {
-    width: 38,
-    height: 38,
+    width: '100%',
+    flex: 1,
   },
   search: {
     width: '100%',
@@ -107,13 +78,13 @@ const styles = StyleSheet.create({
   },
   places: {
     width: '100%',
-    borderWidth: 4,
-    borderColor: '#5FE70C',
+    // borderWidth: 4,
+    // borderColor: '#5FE70C',
     flex: 4,
   },
   favorites: {
     width: '100%',
-    borderWidth: 4,
+    // borderWidth: 4,
     // borderColor: '#CF97EA',
     flex: 4,
   },
@@ -122,20 +93,5 @@ const styles = StyleSheet.create({
     borderWidth: 4,
     // borderColor: '#E28A8F',
     flex: 1,
-  },
-  icon: {
-    width: 24,
-    height: 24,
-  },
-  input: {
-    height: 24,
-  },
-  searchContainer: {
-    height: 45,
-    backgroundColor: '#DEDEDE',
-    borderRadius: 10,
-    flexDirection: 'row',
-    justifyContent: 'space-around',
-    alignItems: 'center',
   },
 });
