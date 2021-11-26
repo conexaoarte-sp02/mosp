@@ -3,9 +3,11 @@ import { View, Text, StyleSheet } from 'react-native';
 import Categories from './Categories';
 import Place from './Place';
 
-const Places = (props: {
+interface PlacesProps {
     title: string;
-}) => {
+}
+
+const Places = (props: PlacesProps) => {
 
     return (
         <View>

@@ -1,10 +1,12 @@
 import React from 'react';
 import { Image, StyleSheet, Text, View } from 'react-native';
 
-const TitleHome = (props: {
+interface TitleHomeProps {
     title: string;
     subtitle: string;
-}) => {
+}
+
+const TitleHome = (props: TitleHomeProps) => {
 
     return (
         <View style={styles.headerContainer}>
