@@ -1,10 +1,14 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { ScrollView, StyleSheet, Text, View } from 'react-native';
 
 const Categories = () => {
 
     return (
-        <View style={styles.categoriesContainer}>
+        <ScrollView
+            horizontal={true}
+            showsHorizontalScrollIndicator={false}
+            style={styles.categoriesContainer}
+        >
             <Text style={styles.categoryActive}>Todos</Text>
             <Text style={styles.categoryItem}>Museus</Text>
             <Text style={styles.categoryItem}>Galerias</Text>
@@ -13,15 +17,13 @@ const Categories = () => {
             </View>
             <Text style={styles.categoryItem}>Esportes</Text>
             <Text style={styles.categoryItem}>Restaurantes</Text>
-        </View>
+        </ScrollView>
     )
 
 }
 
 const styles = StyleSheet.create({
-    categoriesContainer: {
-        flexDirection: 'row',
-        justifyContent: 'space-between',
+    categoriesContainer: {        
         marginTop: 15,
     },
     categoryItem: {

@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, ScrollView } from 'react-native';
 import Categories from './Categories';
 import Place from './Place';
 
@@ -13,12 +13,15 @@ const Places = (props: PlacesProps) => {
         <View>
             <Text style={styles.title}>{props.title}</Text>
             <Categories />
-            <View style={styles.container}>
+            <ScrollView
+                horizontal={true}
+                showsHorizontalScrollIndicator={false}                
+            >
                 <Place />
                 <Place />
                 <Place />
                 <Place />
-            </View>
+            </ScrollView>
         </View>
     )
 
@@ -29,9 +32,6 @@ const styles = StyleSheet.create({
         fontSize: 25,
         color: '#000',
         fontWeight: '600',
-    },
-    container: {
-        flexDirection: 'row',
     },
 });
 

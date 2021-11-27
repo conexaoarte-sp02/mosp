@@ -1,31 +1,39 @@
+import { useNavigation } from '@react-navigation/core';
 import React from 'react';
-import { ImageBackground, StyleSheet, Text, View } from 'react-native';
+import { ImageBackground, StyleSheet, Text, TouchableHighlight, View } from 'react-native';
 import FavoriteIcon from '../Icons/FavoriteIcon';
 import PlaceIcon from '../Icons/PlaceIcon';
 
 const Place = () => {
 
+    const navigation = useNavigation();
+
     return (
-        <View style={styles.container}>
-            <ImageBackground
-                source={require('../../assets/images/masp.png')}
-                style={styles.background}
-                imageStyle={styles.backgroundBorder}
-            >
-                <View style={styles.favoriteContainer}>
-                    <FavoriteIcon />
-                </View>
-            </ImageBackground>
-            <View style={styles.descriptionContainer}>
-                <View>
-                    <Text style={styles.placeName}>Museu de Arte de São Paulo</Text>
-                </View>
-                <View style={styles.locationContainer}>
-                    <PlaceIcon />
-                    <Text style={styles.placeLocation}>São Paulo - SP</Text>
+        <TouchableHighlight
+            style={styles.container}
+            onPress={() => navigation.navigate("Place" as never, {} as never)}
+        >
+            <View>
+                <ImageBackground
+                    source={require('../../assets/images/masp.png')}
+                    style={styles.background}
+                    imageStyle={styles.backgroundBorder}
+                >
+                    <View style={styles.favoriteContainer}>
+                        <FavoriteIcon />
+                    </View>
+                </ImageBackground>
+                <View style={styles.descriptionContainer}>
+                    <View>
+                        <Text style={styles.placeName}>Museu de Arte de São Paulo</Text>
+                    </View>
+                    <View style={styles.locationContainer}>
+                        <PlaceIcon />
+                        <Text style={styles.placeLocation}>São Paulo - SP</Text>
+                    </View>
                 </View>
             </View>
-        </View>
+        </TouchableHighlight>
     )
 
 }
