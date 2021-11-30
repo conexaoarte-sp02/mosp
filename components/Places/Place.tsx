@@ -1,21 +1,27 @@
 import { useNavigation } from '@react-navigation/core';
 import React from 'react';
-import { ImageBackground, StyleSheet, Text, TouchableHighlight, View } from 'react-native';
+import { ImageBackground, ImageSourcePropType, StyleSheet, Text, TouchableHighlight, View } from 'react-native';
+import placeImages from '../../consts/placeImages';
+import { IPlace } from '../../interfaces/IPlace';
 import FavoriteIcon from '../Icons/FavoriteIcon';
 import PlaceIcon from '../Icons/PlaceIcon';
 
-const Place = () => {
+const Place = ({ place }: {
+    place: IPlace
+}) => {
 
     const navigation = useNavigation();
+
+    const img = placeImages.find((item) => item.id === place.id)?.image as ImageSourcePropType;
 
     return (
         <TouchableHighlight
             style={styles.container}
-            onPress={() => navigation.navigate("Place" as never, {} as never)}
+            onPress={() => navigation.navigate("Place" as never, place as never)}
         >
             <View>
                 <ImageBackground
-                    source={require('../../assets/images/masp.png')}
+                    source={img}
                     style={styles.background}
                     imageStyle={styles.backgroundBorder}
                 >
@@ -25,7 +31,7 @@ const Place = () => {
                 </ImageBackground>
                 <View style={styles.descriptionContainer}>
                     <View>
-                        <Text style={styles.placeName}>Museu de Arte de São Paulo</Text>
+                        <Text style={styles.placeName}>{place.name}</Text>
                     </View>
                     <View style={styles.locationContainer}>
                         <PlaceIcon />

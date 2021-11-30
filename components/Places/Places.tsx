@@ -1,5 +1,7 @@
-import React from 'react';
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
 import { View, Text, StyleSheet, ScrollView } from 'react-native';
+import { IPlace } from '../../interfaces/IPlace';
 import Categories from './Categories';
 import Place from './Place';
 
@@ -9,6 +11,22 @@ interface PlacesProps {
 
 const Places = (props: PlacesProps) => {
 
+    const [places, setPlaces] = useState<IPlace[]>([]);
+    
+    useEffect(() => {
+
+        getPlaces();
+
+    }, []);
+
+    const getPlaces = async () => {
+
+        const places = await axios.get('https://besp.westcentralus.cloudapp.azure.com/places');
+
+        setPlaces(places.data);
+
+    }
+
     return (
         <View>
             <Text style={styles.title}>{props.title}</Text>
@@ -17,10 +35,9 @@ const Places = (props: PlacesProps) => {
                 horizontal={true}
                 showsHorizontalScrollIndicator={false}                
             >
-                <Place />
-                <Place />
-                <Place />
-                <Place />
+                {places.map((item) => (
+                    <Place place={item} />
+                ))}
             </ScrollView>
         </View>
     )
