@@ -1,5 +1,6 @@
 import { ImageSourcePropType } from "react-native";
 
+/*
 interface ImageProps {
     id: string;
     image: ImageSourcePropType;
@@ -44,6 +45,55 @@ const placeImages: ImageProps[] = [
         image: require('../assets/images/gallery/aquario.jpg')
     }, {
         id: "6c3b5c10-1264-4401-8844-4428c04c8cb4",
+        image: require('../assets/images/gallery/avenida-paulista.jpg'),
+    },
+];
+*/
+
+interface ImageProps {
+    id: number;
+    image: ImageSourcePropType;
+}
+
+const placeImages: ImageProps[] = [
+    {
+        id: 11,
+        image: require('../assets/images/gallery/president-erick-jacquin.jpg')
+    }, {
+        id: 2,
+        image: require('../assets/images/gallery/theatro-municipal.jpg')
+    }, {
+        id: 6,
+        image: require('../assets/images/gallery/beco-batman.jpg')
+    }, {
+        id: 10,
+        image: require('../assets/images/gallery/mercado-municipal.jpg')
+    }, {
+        id: 12,
+        image: require('../assets/images/gallery/museu-do-futebol.jpg')
+    }, {
+        id: 7,
+        image: require('../assets/images/gallery/pinacoteca.jpg')
+    }, {
+        id: 1,
+        image: require('../assets/images/gallery/masp.jpg')
+    }, {
+        id: 13,
+        image: require('../assets/images/gallery/museu-do-ipiranga.jpg')
+    }, {
+        id: 5,
+        image: require('../assets/images/gallery/autodromo-interlagos.jpg')
+    }, {
+        id: 3,
+        image: require('../assets/images/gallery/museu-videogame.jpg')
+    }, {
+        id: 4,
+        image: require('../assets/images/gallery/parque-ibirapuera.jpg')
+    }, {
+        id: 8,
+        image: require('../assets/images/gallery/aquario.jpg')
+    }, {
+        id: 9,
         image: require('../assets/images/gallery/avenida-paulista.jpg'),
     },
 ];

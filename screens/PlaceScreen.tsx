@@ -69,6 +69,7 @@ const PlaceScreen = ({ route }: {
 const styles = StyleSheet.create({
     container: {
         paddingTop: 40,
+        paddingBottom: 80,
         paddingHorizontal: 30,
         backgroundColor: '#fff',
         flex: 1,

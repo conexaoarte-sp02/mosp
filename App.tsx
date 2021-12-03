@@ -1,27 +1,64 @@
-import { NavigationContainer } from '@react-navigation/native';
+import { DefaultTheme, NavigationContainer } from '@react-navigation/native';
 import React from 'react';
 import { StyleSheet, SafeAreaView } from 'react-native';
 import HomeScreen from './screens/HomeScreen';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Menu from './components/Menu';
 import PlaceScreen from './screens/PlaceScreen';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 const Tab = createBottomTabNavigator();
+const Stack = createNativeStackNavigator();
+
+function Home() {
+
+  return (
+    <Tab.Navigator
+      tabBar={() => <Menu />}
+      screenOptions={{
+        headerShown: false,
+        tabBarStyle: {
+          backgroundColor: '#fff',
+        },
+      }}
+    >
+      <Tab.Screen name="Home" component={HomeScreen} />      
+    </Tab.Navigator>
+  )
+
+}
 
 export default function App() {
+
+  const MyTheme = {
+    ...DefaultTheme,
+    colors: {
+      ...DefaultTheme.colors,
+      background: '#fff',
+    },
+  };
+  
   return (
     <SafeAreaView style={styles.safeArea}>
-      <NavigationContainer>
-        <Tab.Navigator
-          tabBar={() => <Menu />}
-          screenOptions={{
-            headerShown: false,            
-          }}
-        >
-          <Tab.Screen name="Home" component={HomeScreen} />
-          <Tab.Screen name="Place" component={PlaceScreen} />
-        </Tab.Navigator>
-      </NavigationContainer>      
+      <NavigationContainer theme={MyTheme}>
+        
+        <Stack.Navigator>
+          <Stack.Screen
+            name="Home"
+            component={Home}
+            options={{
+              headerShown: false,              
+            }}
+          />
+          <Stack.Screen
+            name="Place"
+            component={PlaceScreen}
+            options={{
+              headerShown: false,
+            }}
+          />
+        </Stack.Navigator>
+      </NavigationContainer>
     </SafeAreaView>
   );
 }
